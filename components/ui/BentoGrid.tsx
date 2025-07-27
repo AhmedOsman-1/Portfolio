@@ -1,5 +1,6 @@
 import { cn } from "@/utils/cn";
 import { BackgroundGradientAnimation } from "./GradientBg";
+import { GlobeDemo } from "./GridGlobe";
 
 export const BentoGrid = ({
     className,
@@ -43,7 +44,7 @@ export const BentoGridItem = ({
     return (
         <div
             className={cn(
-                "group/bento relative shadow-input row-span-1 flex flex-col justify-between space-y-4 rounded-3xl border bg-white p-4 transition duration-200 hover:shadow-xl dark:border-white/[0.2] dark:bg-black dark:shadow-none",
+                "row-span-1 relative overflow-hidden rounded-3xl border border-white/[0.1] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none justify-between flex flex-col space-y-4",
                 className
             )}
             style={{
@@ -79,17 +80,53 @@ export const BentoGridItem = ({
                 </div>
                 {id === 6 && (
                     <BackgroundGradientAnimation>
-                        <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl"/>
+                        <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl" />
                     </BackgroundGradientAnimation>
                 )}
-            </div>
 
-            <div className="transition duration-200 group-hover/bento:translate-x-2">
-                <div className="mt-2 mb-2 font-sans font-bold text-neutral-600 dark:text-neutral-200">
-                    {title}
-                </div>
-                <div className="font-sans text-xs font-normal text-neutral-600 dark:text-neutral-300">
-                    {description}
+                <div
+                    className={cn(
+                        titleClassName,
+                        "group-hover/bento:translate-x-2 transition duration-200 relative md:h-full min-h-40 flex flex-col px-5 p-5 lg:p-10"
+                    )}>
+                    <div className="font-sans font-extralight md:max-w-32 md:text-xs lg:text-base text-sm text-[#C1C2D3] z-10">
+                        {description}
+                    </div>
+                    <div className="font-sans font-bold text-lg text-neutral-600 dark:text-neutral-200 lg:text-3xl max-w-96 z-10">
+                        {title}
+                    </div>
+
+                    {id === 2 && <GlobeDemo />}
+
+                    {id === 3 && (
+                        <div className="flex gap-1 lg:gap-5 w-fit absolute -right-3 lg:-right-2">
+                            <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
+                                {['React.js',
+                                'TailwindCss',
+                                'Next.js', 'Typescript'].map((item, i) => (
+                                    <span
+                                        key={i}
+                                        className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50 
+                                            lg:opacity-100 rounded-lg text-center text-white bg-[#153C5C]">
+                                        {item}
+                                    </span>
+                                ))}
+                                <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-lg text-center bg-[#153C5C]"></span>
+                            </div>
+                            <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
+                                <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-lg text-center bg-[#153C5C]"></span>
+                                {['GitHub', 'JavaScript', 'Figma'].map((item, i) => (
+                                    <span
+                                        key={i}
+                                        className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50 
+                                            lg:opacity-100 rounded-lg text-center text-white bg-[#153C5C]">
+                                        {item}
+                                    </span>
+                                ))}
+                                <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-lg text-center bg-[#153C5C]"></span>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
