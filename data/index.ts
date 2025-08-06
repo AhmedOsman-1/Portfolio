@@ -26,6 +26,7 @@ export const gridItems = [
     img: "",
     spareImg: "",
   },
+  
   {
     id: 3,
     title: "My tech stack",
@@ -72,11 +73,11 @@ export const gridItems = [
 export const projects = [
   {
     id: 1,
-    title: "3D Solar System Planets to Explore",
-    des: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
-    img: "/p1.svg",
+    title: "Unleash the power of AI within Brainwave.",
+    des: "Brainwave — Unleash the power of AI at your fingertips. Elevate your productivity and creativity with Brainwave, the open AI chat app designed to help you brainstorm, create, and solve problems faster. ",
+    img: "/p1.png",
     iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
-    link: "/ui.earth.com",
+    link: "https://bracewave.vercel.app/",
   },
   {
     id: 2,

@@ -6,11 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "ANALYZE=true npm run build"
   },
   "dependencies": {
-    "@react-three/drei": "^9.77.1",
+    "@react-three/drei": "^9.74.2",
     "@react-three/fiber": "^8.13.5",
+    "@sentry/nextjs": "^10.1.0",
     "clsx": "^2.1.1",
     "mini-svg-data-uri": "^1.4.4",
     "motion": "^12.23.9",
@@ -23,13 +25,15 @@
     "react-simple-typewriter": "^5.0.1",
     "tailwind-merge": "^3.3.1",
     "tailwindcss-animate": "^1.0.7",
-    "three": "^0.178.0",
-    "three-globe": "^2.43.0"
+    "three": "^0.152.2",
+    "three-globe": "^2.26.0"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^15.4.5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-lottie": "^1.2.10",
     "eslint": "^8",
     "eslint-config-next": "14.2.30",
     "postcss": "^8",
