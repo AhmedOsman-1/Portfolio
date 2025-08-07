@@ -33,6 +33,12 @@ export default function ContactForm() {
 
     if (!formRef.current) return;
 
+    // Debug: log environment variables
+    console.log("Env Variables:");
+    console.log("SERVICE_ID:", process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID);
+    console.log("TEMPLATE_ID:", process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID);
+    console.log("PUBLIC_KEY:", process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
+
     setLoading(true);
 
     try {
@@ -52,9 +58,14 @@ export default function ContactForm() {
         subject: "",
         message: "",
       });
-    } catch (error) {
-      console.error("❌ Failed:", error);
-      alert("❌ Failed to send message. Please try again later.");
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      console.error("❌ Failed to send email:", error);
+      alert(
+        `❌ Failed to send message. ${
+          error?.status ? "Status: " + error.status : ""
+        } ${error?.text ? "Message: " + error.text : ""} Please try again later.`
+      );
     } finally {
       setLoading(false);
     }
