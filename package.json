@@ -13,6 +13,7 @@
     "@react-three/drei": "^9.74.2",
     "@react-three/fiber": "^8.13.5",
     "@sentry/nextjs": "^10.1.0",
+    "@tabler/icons-react": "^3.34.1",
     "clsx": "^2.1.1",
     "mini-svg-data-uri": "^1.4.4",
     "motion": "^12.23.9",

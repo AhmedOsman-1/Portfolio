@@ -9,7 +9,6 @@ import { GlobeDemo } from "./GridGlobe";
 import MagicButton from "./MagicButton";
 import { IoCopyOutline } from "react-icons/io5";
 
-
 export const BentoGrid = ({
     className,
     children,
@@ -57,7 +56,7 @@ export const BentoGridItem = ({
                 setCopied(false);
             }, 1000);
         });
-    }
+    };
     return (
         <div
             className={cn(
@@ -65,16 +64,17 @@ export const BentoGridItem = ({
                 className
             )}
             style={{
-                background: "#041C34",
+                // FIX: Removed duplicate 'background' property, keep gradient only
                 background:
                     "linear-gradient(90deg, rgba(4, 28, 52, 1) 0%, rgba(4, 29, 54, 1) 46%, rgba(4, 28, 52, 1) 100%)",
             }}>
-            <div className={`${id === 6 && 'flex justify-center'} h-full`}>
+            <div className={`${id === 6 ? 'flex justify-center' : ''} h-full`}>
                 <div className="w-full h-full absolute">
                     {img && (
                         <Image
                             src={img}
-                            alt={title}
+                            // FIX: alt expects string, title can be ReactNode, so convert safely
+                            alt={typeof title === "string" ? title : ""}
                             width={220}
                             height={220}
                             className={cn(
@@ -86,7 +86,7 @@ export const BentoGridItem = ({
                 </div>
                 <div
                     className={`absolute right-0 -bottom-5 ${
-                        id === 5 && "w-full opacity-80"
+                        id === 5 ? "w-full opacity-80" : ""
                     } `}>
                     {spareImg && (
                         <Image
@@ -94,14 +94,13 @@ export const BentoGridItem = ({
                             alt={spareImg}
                             width={220}
                             height={220}
-                            //   width={220}
                             className="object-cover object-center w-full h-full"
                         />
                     )}
                 </div>
                 {id === 6 && (
                     <BackgroundGradientAnimation>
-                        {/* <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl" /> */}
+                        {/* Commented out content unchanged */}
                     </BackgroundGradientAnimation>
                 )}
 
@@ -156,28 +155,27 @@ export const BentoGridItem = ({
                     {id === 6 && (
                         <div className="mt-5 relative">
                             <div className={`absolute -bottom-5 right-0`}>
-
                                 <Lottie 
-                                options={{
-                                    loop: copied,
-                                    autoplay: copied,
-                                    animationData,
-                                    rendererSettings: {
-                                        preserveAspectRatio: "xMidYMid slice",
-                                    },
-                                }} />
+                                    options={{
+                                        loop: copied,
+                                        autoplay: copied,
+                                        animationData,
+                                        rendererSettings: {
+                                            preserveAspectRatio: "xMidYMid slice",
+                                        },
+                                    }} 
+                                />
                             </div>
                             <MagicButton 
-                            
-                            title={copied? 'Email copied!' : 'Copy my Email'}
-                            icon={<IoCopyOutline />}
-                            position="left"
-                            otherClasses=""
-                            handleClick={handleCopy}
+                                title={copied ? 'Email copied!' : 'Copy my Email'}
+                                icon={<IoCopyOutline />}
+                                position="left"
+                                otherClasses=""
+                                handleClick={handleCopy}
                             />
                         </div>
                     )}
-                    </div>
+                </div>
             </div>
         </div>
     );

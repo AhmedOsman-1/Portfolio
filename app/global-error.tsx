@@ -12,8 +12,8 @@ export default function GlobalError({ error }: { error: Error & { digest?: strin
   return (
     <html>
       <body>
-        {error}
-        <NextError statusCode={0} />
+        <h1 className="text-2xl text-red-600 font-bold">Something went wrong!</h1>
+        <NextError statusCode={500} />
       </body>
     </html>
   );

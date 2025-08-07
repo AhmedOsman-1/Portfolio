@@ -6,7 +6,7 @@ import MagicButton from "./ui/MagicButton";
 
 const Footer = () => {
     return (
-        <footer className="w-full pb-10 mb-[100px] md:mb-5" id="contact">
+        <footer className="w-full pb-10 mb-[100px] md:mb-10" id="contact">
             <div className="flex flex-col items-center">
                 <h1 className="heading lg:max-w-[54vw] text-white">
                     Ready to take <span className="text-[#2079ff]">Your</span>{" "}
