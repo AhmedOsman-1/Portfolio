@@ -1,14 +1,14 @@
 "use client";
-import React, { useState } from "react";
-import {
-  motion,
-  AnimatePresence,
-  useScroll,
-  useMotionValueEvent,
-} from "motion/react";
 import { cn } from "@/utils/cn";
+import { IconHome, IconMessage, IconUser } from "@tabler/icons-react";
+import {
+  AnimatePresence,
+  motion,
+  useMotionValueEvent,
+  useScroll,
+} from "framer-motion";
 import Link from "next/link";
-import { IconHome, IconUser, IconMessage } from "@tabler/icons-react"; // **import icons**
+import { useState } from "react";
 
 type NavItem = {
   name: string;
@@ -16,7 +16,7 @@ type NavItem = {
   icon?: JSX.Element;
 };
 
-// Existing FloatingNav (top)
+// FloatingNav (Top)
 export const FloatingNav = ({
   navItems,
   className,
@@ -25,21 +25,15 @@ export const FloatingNav = ({
   className?: string;
 }) => {
   const { scrollYProgress } = useScroll();
-
   const [visible, setVisible] = useState(false);
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     if (typeof current === "number") {
       const direction = current - scrollYProgress.getPrevious()!;
-
       if (scrollYProgress.get() < 0.05) {
         setVisible(false);
       } else {
-        if (direction < 0) {
-          setVisible(true);
-        } else {
-          setVisible(false);
-        }
+        setVisible(direction < 0);
       }
     }
   });
@@ -63,8 +57,8 @@ export const FloatingNav = ({
               "relative dark:text-neutral-50 items-center flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500"
             )}
           >
-            <span className="block sm:hidden">{navItem.icon}</span>
-            <span className="hidden sm:block text-sm">{navItem.name}</span>
+            <span className="block">{navItem.icon}</span>
+            <span className="block text-sm">{navItem.name}</span>
           </Link>
         ))}
       </motion.div>
@@ -72,7 +66,7 @@ export const FloatingNav = ({
   );
 };
 
-// New FloatingNavBottom (bottom fixed)
+// FloatingNavBottom (Bottom)
 export const FloatingNavBottom = ({
   navItems,
   className,
@@ -81,21 +75,15 @@ export const FloatingNavBottom = ({
   className?: string;
 }) => {
   const { scrollYProgress } = useScroll();
-
   const [visible, setVisible] = useState(false);
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     if (typeof current === "number") {
       const direction = current - scrollYProgress.getPrevious()!;
-
       if (scrollYProgress.get() < 0.05) {
         setVisible(false);
       } else {
-        if (direction < 0) {
-          setVisible(true);
-        } else {
-          setVisible(false);
-        }
+        setVisible(direction < 0);
       }
     }
   });
@@ -119,8 +107,8 @@ export const FloatingNavBottom = ({
               "relative dark:text-neutral-50 items-center flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500"
             )}
           >
-            <span className="block sm:hidden">{navItem.icon}</span>
-            <span className="hidden sm:block text-sm">{navItem.name}</span>
+            <span className="block text-sm">{navItem.icon}</span>
+            <span className="block text-sm">{navItem.name}</span>
           </Link>
         ))}
       </motion.div>
@@ -128,11 +116,16 @@ export const FloatingNavBottom = ({
   );
 };
 
+// Page component
 export default function Page() {
   const navItemsTop: NavItem[] = [
     { name: "Home", link: "#home", icon: <IconHome className="h-4 w-4" /> },
     { name: "About", link: "#about", icon: <IconUser className="h-4 w-4" /> },
-    { name: "Contact", link: "#contact", icon: <IconMessage className="h-4 w-4" /> },
+    {
+      name: "Contact",
+      link: "#contact",
+      icon: <IconMessage className="h-4 w-4" />,
+    },
   ];
 
   const navItemsBottom: NavItem[] = [
@@ -145,7 +138,7 @@ export default function Page() {
     <>
       <FloatingNav navItems={navItemsTop} />
       <FloatingNavBottom navItems={navItemsBottom} />
-      {/* rest of page content */}
+      {/* Add your other content here */}
     </>
   );
 }
