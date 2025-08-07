@@ -8,12 +8,46 @@ const Clients = () => {
       <h1 className="heading text-white">
         Kind words from <span className="text-[#2079ff]">our clients</span>
       </h1>
-      <div className="flex flex-col items-center justify-center gap-4 md:gap-16 max-lg: mt-10">
+
+      {/* Testimonials carousel */}
+      <div className="flex flex-col items-center justify-center gap-8 max-lg:mt-10">
         <InfiniteMovingCards items={testimonials} direction="right" speed="slow" />
 
-        <div className="flex flex-wrap justify-center gap-4 mt-8">
+        {/* Show testimonial images below */}
+        <div className="flex flex-wrap justify-center gap-6 mt-8">
+          {testimonials.map(({ id, name, img, title }) => (
+            <div
+              key={id}
+              className="flex flex-col items-center gap-2 max-w-[120px]"
+            >
+              {img ? (
+                <Image
+                  src={img}
+                  alt={name}
+                  height={80}
+                  width={80}
+                  className="rounded-full object-cover"
+                />
+              ) : (
+                <div className="h-20 w-20 rounded-full bg-gray-600 flex items-center justify-center text-white">
+                  {name.charAt(0)}
+                </div>
+              )}
+              <p className="text-sm text-center text-white font-semibold">
+                {name}
+              </p>
+              <p className="text-xs text-center text-gray-400">{title}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Companies logos section */}
+        <div className="flex flex-wrap justify-center gap-4 mt-12">
           {companies.map(({ id, img, name, nameImg }) => (
-            <div key={id} className="flex flex-col items-center md:max-w-60 max-w-32 gap-2">
+            <div
+              key={id}
+              className="flex flex-col items-center md:max-w-60 max-w-32 gap-2"
+            >
               <Image
                 src={img}
                 alt={name}
@@ -21,15 +55,13 @@ const Clients = () => {
                 width={100}
                 className="md:w-10 w-5 object-contain"
               />
-              <Image 
-              src={nameImg}
-              alt={name}
-              height={100}
-              width={100}
-              className="md:w-24 w-20"
-              
+              <Image
+                src={nameImg}
+                alt={name}
+                height={100}
+                width={100}
+                className="md:w-24 w-20"
               />
-              
             </div>
           ))}
         </div>

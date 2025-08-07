@@ -2,6 +2,9 @@ import { withSentryConfig } from '@sentry/nextjs';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    domains: ['x.com', 'github.com'],
+  },
   // You can add custom Next.js config here
 };
 
@@ -26,4 +29,5 @@ export default withSentryConfig(nextConfig, {
   // Optional: Route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers
   // NOTE: Make sure this route doesn't conflict with middleware
   tunnelRoute: "/monitoring",
+
 });

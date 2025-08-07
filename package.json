@@ -7,14 +7,18 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "analyze": "ANALYZE=true npm run build"
+    "analyze": "ANALYZE=true npm run build",
+    "email": "email dev"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "@react-email/components": "^0.5.0",
     "@react-three/drei": "^9.74.2",
     "@react-three/fiber": "^8.13.5",
     "@sentry/nextjs": "^10.1.0",
     "@tabler/icons-react": "^3.34.1",
     "clsx": "^2.1.1",
+    "emailjs-com": "^3.2.0",
     "mini-svg-data-uri": "^1.4.4",
     "motion": "^12.23.9",
     "next": "^14.2.30",

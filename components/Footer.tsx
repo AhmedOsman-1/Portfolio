@@ -1,8 +1,11 @@
 import { socialMedia } from "@/data";
-import Image from "next/image";
+
 import Link from "next/link";
 import { FaLocationArrow } from "react-icons/fa";
 import MagicButton from "./ui/MagicButton";
+import Image from "next/image";
+import ContactForm from "./ContactForm";
+
 
 const Footer = () => {
     return (
@@ -15,13 +18,15 @@ const Footer = () => {
                 <p className="text-white-200 md:mt-10 my-5 text-center">
                     Reach out to me today let&apos;s discuss how I can help you
                     achieve your goals.
-                </p>
-                <Link href="osmangonidevx@gmail.com">
+                </p> 
+                   <ContactForm />       
+                    
+                <Link href="mailto:osmangonidevx@gmail.com">
                     <MagicButton
-                            title="Let's get in touch"
-                            icon={<FaLocationArrow />}
-                            position="right"
-                        />
+                        title="Let's get in touch"
+                        icon={<FaLocationArrow />}
+                        position="right"
+                    />
                 </Link>
             </div>
 
@@ -31,16 +36,19 @@ const Footer = () => {
                 </p>
                 <div className="flex items-center md:gap-3 gap-6">
                     {socialMedia.map((info) => (
-                        <div
+                        <Link
                             key={info.id}
+                            href={info.src}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-[#041C34] rounded-lg border border-black-300">
                             <Image
                                 src={info.img}
-                                alt="icons"
+                                alt="social-icon"
                                 width={20}
                                 height={20}
                             />
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>
