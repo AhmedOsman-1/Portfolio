@@ -40,7 +40,7 @@ export const TextGenerateEffect = ({
                             className={` ${
                                 idx > 3
                                     ? "text-[#2079ff]"
-                                    : "dark:text-white text-black"
+                                    : "text-white dark:text-white"
                             } opacity-0`}
                             style={{
                                 filter: filter ? "blur(10px)" : "none",
